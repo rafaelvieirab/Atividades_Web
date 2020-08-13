@@ -3,19 +3,24 @@
     width: 100vw;
     margin: 0 auto;
     box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-items: center;
 }
 
-header img {
-    margin: 0 auto;
+header img{
+    margin-right: 128px;
 }
 
 #fields {}
 
-#fields form {}
+#fields form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
 #fields form .field-input {
     margin: 24px 0;
@@ -25,26 +30,21 @@ header img {
     justify-content: space-evenly;
 }
 
-.field-input label {
-    width: 156px;
-    margin-right: 32px;
+.field-input > label{
+    width: 136px;
 }
 
 .field-input > input {
     height: 32px;
-    width: 60%;
+    width: 420px;
     padding: 5px;
 
     text-align: center;
-    border: #101010 2px solid;
+    border: #101010 3px solid;
 }
 
 .field-input > input:focus {
     border: #33c3f3 3px solid;
-}
-
-input[type='checkbox'] {
-    background: blue;
 }
 
 .field-input + #buttons {
@@ -54,33 +54,37 @@ input[type='checkbox'] {
     justify-content: space-around;
 }
 
-.field-input + #buttons label {
-    width: 32px;
-    margin-right: 0px;
-}
-
 #optionsServices {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
 }
+
+input[type='checkbox'] {
+    cursor: pointer;
+}
+
 /*
 #optionsServices .halfOptions {}
-
-#optionsServices .halfOptions .field-checkbox {
+*/
+.halfOptions .field-checkbox {
+    margin: 8px 2px;
 }
-
-#optionsServices .halfOptions .field-checkbox input{}
+/*
+#optionsServices .halfOptions .field-checkbox span input{}
 
 #optionsServices .halfOptions .field-checkbox label{}
 */
 #buttons {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
+#buttons div {
+    margin-right: 128px;
+}
 button {
     width: 128px;
     height: 36px;
@@ -116,8 +120,23 @@ button:active {
     background-color: #e0e0e0;
 }
 
-#results-table {}
+#results-table {
+    margin: 32px 0;
+}
 
 table {
-    border: black 1px solid;
+    border: #616161 1px solid;
+    border-collapse: collapse;
+}
+
+tr {}
+
+th, td {
+    padding: 16px;
+    min-width: 90px;
+    min-height: 20px;
+    border: #808080 1px solid;
+    border-collapse: collapse;
+
+    text-align: center;
 }
