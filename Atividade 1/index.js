@@ -7,42 +7,99 @@ class Record {
     }
 }
 
+var arrayServices = [
+    {
+        id:"cpu-micro",
+        description: "Processing - 1 micro - $ 1,00 per hour",
+        valueByHour: 1
+    },
+    {
+        id:"cpu-medium",
+        description: "Processing - 1 medium - $ 2,00 per hour",
+        valueByHour: 2
+    },
+    {
+        id:"cpu-large",
+        description: "Processing - 1 large - $ 10,00 per hour",
+        valueByHour: 10
+    },
+    {
+        id:"hd-10gb",
+        description: "Storage - 10 GB HD - $ 0,50 per hour",
+        valueByHour: 0.5
+    },
+    {
+        id:"hd-1tb",
+        description: "Storage - 1 TB HD - $ 1,00 per hour",
+        valueByHour: 1
+    },
+    {
+        id:"ssd-100gb",
+        description: "Storage - 100 GB - $ 5,00 per hour",
+        valueByHour: 5
+    },
+    
+]
+
 var arrayRecords = []
 
-function getServices(){
-    const optionsServices = document.querySelectorAll("input[type='checkbox']")
+function clearFields(){
+    const nameEl = document.querySelector("input[name='name']")
+    const emailEl = document.querySelector("input[name='email']")
+    const birthEl = document.querySelector("input[name='birth']")
+    const optionsEl = document.querySelectorAll("input[type='checkbox']:checked")
     
-    let optionsFiltered = []
-    for (let i=0; i< optionsServices.length; i++)
-        if(optionsServices[i].checked)
-            optionsFiltered.push(i)
-
-    return optionsFiltered
-
+    nameEl.value = ""
+    emailEl.value = ""
+    birthEl.value = ""
+    optionsEl.forEach( inputEl => inputEl.checked=false)
 }
+
+function checkFieldsFilling(name, email, birth, services){
+    if (name === "" || email === "" || birth === "" || services.length === 0) {
+        alert("Preencha todos os campos")
+        return false
+    }
+    if( email.search(/\w+@[a-z]+.[a-z]+/) === -1) {
+        alert("Digite um email valido!")
+        return false
+    }
+    return true
+}
+
 function getValues(){
     const name = document.querySelector("input[name='name']").value
     const email = document.querySelector("input[name='email']").value
     const birth = document.querySelector("input[name='birth']").value
+    const optionsEl = document.querySelectorAll("input[type='checkbox']:checked")
     
-    const services = getServices()
+    let inputIds = []
+    optionsEl.forEach(inputEl => inputIds.push(inputEl.id))
 
-    const record = new Record(name, email, birth, services)
+    if (! checkFieldsFilling(name, email, birth, inputIds)) {
+        return null
+    }
+
+    const record = new Record(name, email, birth, inputIds)
     return record
 }
 
-function add(){
+function addInfo(event){
+    event.preventDefault()
     const record = getValues()
-    arrayRecords.push(record)
 
-    buildTable()
-    console.log(`name: ${record.name} email: ${record.email} birth: ${record.birth}`)
+    if(record !== null) {
+        arrayRecords.push(record)
+        clearFields()
+        buildTable()
+    }
 }
 
 function buildTable(){
-    const tableEL = document.querySelector("table")
+    const tbodyEL = document.querySelector("tbody")
+    tbodyEL.innerHTML = ""
 
-    for(record in arrayRecords){
+    arrayRecords.forEach( record =>{
         const trEl = document.createElement("tr")
         const tdName = document.createElement("td")
         const tdEmail = document.createElement("td")
@@ -50,47 +107,32 @@ function buildTable(){
         const tdServices = document.createElement("td")
         const tdTotal = document.createElement("td")
 
-        tdName.value = record.name
-        tdEmail.value = record.email
-        tdBirth.value = record.birth
+        tdName.textContent = record.name
+        tdEmail.textContent = record.email
+        tdBirth.textContent = record.birth
 
         const [services, total] = returnServicesAndTotal(record.services)
-        tdServices.value = services
-        tdTotal.value = total
+        tdServices.innerHTML = services
+        tdTotal.textContent = total
         
         trEl.append(tdName, tdEmail, tdBirth, tdServices, tdTotal)
-        tableEL.appendChild(trEl)
-    }
+        tbodyEL.appendChild(trEl)
+    })
 }
 
 function returnServicesAndTotal(services) {
     let textServices = ""
     let total = 0
-    if( services.include(0)){
-        textServices +="Processing - 1 micro - $ 1,00 per hour\n"
-        total +=1
-    }
-    if( services.include(1)){
-        textServices +="Processing - 1 medium - $ 2,00 per hour\n"
-        total +=2
-    }
-    if( services.include(2)){
-        textServices += "Processing - 1 large - $ 10,00 per hour\n"
-        total +=10
-    }
-    if( services.include(3)){
-        textServices +="Storage - 10 GB HD - $ 0,5 per hour\n"
-        total +=0.5
-    }
-    if( services.include(4)){
-        textServices +="Storage - 1 TB HD - $ 1,00 per hour\n"
-        total +=1
-    }
-    if( services.include(5)){
-        textServices +="Storage - 100 GB SSD - $ 5,00 per hour\n"
-        total +=5
-    }
 
-    return [textServices, total]
+    services.forEach(idService => {
+        for(let itemService in arrayServices){
+            if (arrayServices[itemService].id === idService){
+                textServices += `<p>${arrayServices[itemService].description}</p>`
+                total += arrayServices[itemService].valueByHour
+            }
+        }
+    });
+
+    const textTotal = `$ ${total} per hour`
+    return [textServices, textTotal]
 }
-

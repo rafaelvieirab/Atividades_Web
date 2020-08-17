@@ -12,47 +12,47 @@
             <img src="images/fastCloud.png" alt="Logo">
         </header>
         <div id="fields">
-            <form action="">
+            <form>
                 <div class="field-input">
                     <label for="name">Name</label>
-                    <input type="text" name="name">
+                    <input type="text" name="name" required>
                 </div>
                 <div class="field-input">
                     <label for="email">E-mail</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" required>
                 </div>
                 <div class="field-input">
                     <label for="birth">Date of birth</label>
-                    <input type="date" name="birth">
+                    <input type="date" name="birth" required>
                 </div>
                 <div class="field-input">
                     <label>Services</label>
                     <div id="optionsServices">
                         <div class="halfOptions">
                             <div class="field-checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" id="cpu-micro">
                                 <label for="">Processing - 1 micro - $ 1,00 per hour</label>
                             </div>
                             <div class="field-checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox"  id="cpu-medium">
                                 <label for="">Processing - 1 medium - $ 2,00 per hour</label>
                             </div>
                             <div class="field-checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox"  id="cpu-large">
                                 <label for="">Processing - 1 large - $ 10,00 per hour</label>
                             </div>
                         </div>
                         <div class="halfOptions">
                             <div class="field-checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" id="hd-10gb">
                                 <label for="">Storage - 10 GB HD - $ 0,5 per hour</label>
                             </div>
                             <div class="field-checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" id="hd-1tb">
                                 <label for="">Storage - 1 TB HD - $ 1,00 per hour</label>
                             </div>
                             <div class="field-checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" id="ssd-100gb">
                                 <label for="">Storage - 100 GB SSD - $ 5,00 per hour</label>
                             </div>
                         </div>
@@ -61,27 +61,31 @@
                 <footer id="buttons">
                     <div>
                         <button type="reset">CLEAR</button>
-                        <button type="submit"  onclick="add()">ADD</button>
+                        <button type="submit"  onclick="addInfo(event)">ADD</button>
                     </div>
                 </footer>
             </form>
         </div>
         <div id="results-table">
             <table>
-                <tr>
-                    <th>Name</th>
-                    <th>E-mail</th>
-                    <th>Date of Birth</th>
-                    <th>Services</th>
-                    <th>Total</th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Date of Birth</th>
+                        <th>Services</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
