@@ -3,31 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="styles.css">
     <title>Atividade 1</title>
 </head>
 <body>
-    <div id="page">
+    <div id="page" class="d-flex flex-column align-items-center justify-content-center">
         <header>
-            <img src="images/fastCloud.png" alt="Logo">
+            <img src="images/fastCloud.png" alt="Logo" class="mx-auto d-block img-fluid">
         </header>
         <div id="fields">
-            <form>
-                <div class="field-input">
+            <!--class="needs-validation" 
+            link: https://www.w3schools.com/bootstrap4/bootstrap_forms.asp
+            -->
+            <form class="was-validated d-flex flex-column align-items-start">
+
+                <div class="form-group field-input">
                     <label for="name">Name</label>
-                    <input type="text" name="name" required>
+                    <input type="text" name="name" class="form-control" placeholder="Digite seu nome" required>
                 </div>
-                <div class="field-input">
+                <div class="form-group field-input">
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" class="form-control" placeholder="Digite seu email" required>
                 </div>
-                <div class="field-input">
+                <div class="form-group field-input">
                     <label for="birth">Date of birth</label>
-                    <input type="date" name="birth" required>
+                    <input type="date" name="birth" class="form-control" required>
                 </div>
-                <div class="field-input">
+                
+                <div class="field-input" class="d-flex flex-row justify-content-around">
                     <label>Services</label>
-                    <div id="optionsServices">
+                    <div id="optionsServices" class="d-flex flex-row justify-content-between">
                         <div class="halfOptions">
                             <div class="field-checkbox">
                                 <input type="checkbox" id="cpu-micro">
@@ -58,17 +67,17 @@
                         </div>
                     </div>
                 </div>
-                <footer id="buttons">
+                <footer id="buttons" class="d-flex flex-row justify-content-center">
                     <div>
-                        <button type="reset">CLEAR</button>
-                        <button type="submit"  onclick="addInfo(event)">ADD</button>
+                        <button type="reset"class="btn btn-secondary">CLEAR</button>
+                        <button type="submit" onclick="addInfo(event)" class="btn btn-primary">ADD</button>
                     </div>
                 </footer>
             </form>
         </div>
-        <div id="results-table">
-            <table>
-                <thead>
+        <div id="results-table" class="table-responsive">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="thead-light">
                     <tr>
                         <th>Name</th>
                         <th>E-mail</th>
@@ -91,5 +100,9 @@
     </div>
 
     <script src="index.js"></script>
+    <!--Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>
