@@ -1,3 +1,69 @@
+Vue.component('rowTable', {
+    props: ['record'],
+    template: '<tr><td>{{record.name}}</td><td>{{record.email}}</td><td>{{record.birth}}</td><td>{{record.optionsServices}}</td></tr>'
+})
+/*
+new Vue({
+    el: '#table'
+})
+*/
+new Vue({
+    el: '#table',
+    data: {
+        arrayRecords: []
+    },
+    computed: {
+        showTable(){
+            //exibe a tabela, sempre que arrayRecords é alterado
+            return "<rowTable><rowTable>"
+        }
+    }
+})
+
+var fieldsFormVue = new Vue({
+    el: "#form",
+    data: {
+        name: "",
+        email: "",
+        birth: "",
+        optionsServices: []
+    },
+    methods: {
+        clear() {
+            this.name = ""
+            this.email = ""
+            this.birth = ""
+            this.optionsServices = ""
+        },
+        checkFieldsFilling() {
+            if(this.name === "" || this.email === "" || this.birth === ""){
+                alert("Preencha todos os campos")
+                return false
+            }
+            if (this.optionsServices.length === 0)
+                return  false
+
+            if (this.email.search(/\w+@[a-z]+.[a-z]+/) === -1) {
+                alert("Digite um email valido!")
+                return false
+            }
+            return true
+        },
+        add(){
+            const optionsEl = document.querySelectorAll("input[type='checkbox']:checked")
+            let inputIds = []
+            optionsEl.forEach(inputEl => inputIds.push(inputEl.id))
+
+            if (this.checkFieldsFilling()) 
+                const record = new Record(this.name, this.email, this.birth, this.inputIds)
+                arrayRecords.push(record)
+                this.clearFields()
+                
+                //buildTable()
+        }
+    }
+})
+
 class Record {
     constructor(name, email, birth, services){
         this.name = name
@@ -44,26 +110,16 @@ var arrayServices = [
 var arrayRecords = []
 
 function clearFields(){
-    const nameEl = document.querySelector("input[name='name']")
-    const emailEl = document.querySelector("input[name='email']")
-    const birthEl = document.querySelector("input[name='birth']")
+    fieldsFormVue.clearFields()
+
     const optionsEl = document.querySelectorAll("input[type='checkbox']:checked")
-    
-    nameEl.value = ""
-    emailEl.value = ""
-    birthEl.value = ""
     optionsEl.forEach( inputEl => inputEl.checked=false)
 }
 
 function checkFieldsFilling(name, email, birth, services){
-    if (name === "" || email === "" || birth === "" || services.length === 0) {
-        alert("Preencha todos os campos")
-        return false
-    }
-    if( email.search(/\w+@[a-z]+.[a-z]+/) === -1) {
-        alert("Digite um email valido!")
-        return false
-    }
+    fieldsFormVue.checkFieldsFilling()
+    if (services.length === 0)
+        return  false
     return true
 }
 

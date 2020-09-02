@@ -19,19 +19,19 @@
             <!--class="was-validated" 
             link: https://www.w3schools.com/bootstrap4/bootstrap_forms.asp
             -->
-            <form class="needs-validation">
+            <form id="form" v-on:submit.prevent="onSubmit" class="needs-validation">
 
                 <div class="row form-group field-input">
                     <label class="col-sm-3" for="name">Name</label>
-                    <input type="text" class="col-sm-9 form-control" name="name" placeholder="Digite seu nome" required>
+                    <input type="text" v-model="name" class="col-sm-9 form-control" name="name" placeholder="Digite seu nome" required>
                 </div>
                 <div class="row form-group field-input">
-                    <label class="col-sm-3"  for="email">E-mail</label>
-                    <input type="email" class="col-sm-9 form-control"  name="email"placeholder="Digite seu email" required>
+                    <label class="col-sm-3" for="email">E-mail</label>
+                    <input type="email" v-model="email" class="col-sm-9 form-control" name="email"placeholder="Digite seu email" required>
                 </div>
                 <div class="row form-group field-input">
-                    <label class="col-sm-3"  for="birth">Date of birth</label>
-                    <input type="date" class="col-sm-9 form-control"  name="birth" required>
+                    <label class="col-sm-3" for="birth">Date of birth</label>
+                    <input type="date" v-model="birth" class="col-sm-9 form-control" name="birth" required>
                 </div>
                 
                 <div class="row field-input" class="d-flex flex-row justify-content-around">
@@ -69,12 +69,12 @@
                 </div>
                 <footer id="buttons" class="d-flex flex-row justify-content-center">
                         <button type="reset" class="btn btn-secondary">CLEAR</button>
-                        <button type="submit" onclick="addInfo(event)" class="btn btn-primary">ADD</button>
+                        <button type="submit" v-on:click="add()" class="btn btn-primary">ADD</button>
                 </footer>
             </form>
         </div>
         <div id="results-table" class="table-responsive">
-            <table class="table table-hover table-striped table-bordered">
+            <table id="table" class="table table-hover table-striped table-bordered">
                 <thead class="thead-light">
                     <tr>
                         <th>Name</th>
@@ -85,6 +85,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <row-table
+                        v-for="record in arrayRecords"
+                        v-bind:record="record"
+                        v-bind:key="record.id"
+                    ></row-table>
                     <tr>
                         <td></td>
                         <td></td>
@@ -102,5 +107,28 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!--Vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+
+<!--
+    <div id="app-7">
+        <ol>
+            -->
+            <!--
+                Agora provemos cada todo-item com o objeto todo que ele
+                representa, de forma que seu conteúdo possa ser dinâmico.
+                Também precisamos prover cada componente com uma "chave",
+                a qual será explicada posteriormente.
+            
+            <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id"
+            ></todo-item>
+        </ol>
+    </div>
+-->
+
 </body>
 </html>
