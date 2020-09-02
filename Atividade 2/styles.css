@@ -11,43 +11,19 @@ header {
 
 #fields form .field-input {
     margin: 24px 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.field-input > label{
-    width: 136px;
 }
 
 .field-input > input {
-    height: 32px;
-    width: 420px;
-    padding: 5px;
-
     text-align: center;
-    border: #101010 3px solid;
-}
-
-.field-input > input:focus {
-    border: #33c3f3 3px solid;
+    border: #555252 1px solid;
 }
 
 input[type='checkbox'] {
     cursor: pointer;
 }
 
-.halfOptions .field-checkbox {
-    margin: 8px 2px;
-}
-
 #buttons {
     width: 100%;
-}
-
-#buttons div {
-    margin-right: 128px;
 }
 
 button {
@@ -97,4 +73,11 @@ th, td {
     min-height: 30px;
 
     text-align: center;
+}
+
+@media (max-width: 700px) {
+    /*
+        Quebrar linhas
+    */
+
 }

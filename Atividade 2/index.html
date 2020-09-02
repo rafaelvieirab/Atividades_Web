@@ -12,66 +12,64 @@
 </head>
 <body>
     <div id="page" class="d-flex flex-column align-items-center justify-content-center">
-        <header>
-            <img src="images/fastCloud.png" alt="Logo" class="mx-auto d-block img-fluid">
+        <header class="mx-auto d-block">
+            <img src="images/fastCloud.png" alt="Logo" class="img-fluid">
         </header>
         <div id="fields">
-            <!--class="needs-validation" 
+            <!--class="was-validated" 
             link: https://www.w3schools.com/bootstrap4/bootstrap_forms.asp
             -->
-            <form class="was-validated d-flex flex-column align-items-start">
+            <form class="needs-validation">
 
-                <div class="form-group field-input">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Digite seu nome" required>
+                <div class="row form-group field-input">
+                    <label class="col-sm-3" for="name">Name</label>
+                    <input type="text" class="col-sm-9 form-control" name="name" placeholder="Digite seu nome" required>
                 </div>
-                <div class="form-group field-input">
-                    <label for="email">E-mail</label>
-                    <input type="email" name="email" class="form-control" placeholder="Digite seu email" required>
+                <div class="row form-group field-input">
+                    <label class="col-sm-3"  for="email">E-mail</label>
+                    <input type="email" class="col-sm-9 form-control"  name="email"placeholder="Digite seu email" required>
                 </div>
-                <div class="form-group field-input">
-                    <label for="birth">Date of birth</label>
-                    <input type="date" name="birth" class="form-control" required>
+                <div class="row form-group field-input">
+                    <label class="col-sm-3"  for="birth">Date of birth</label>
+                    <input type="date" class="col-sm-9 form-control"  name="birth" required>
                 </div>
                 
-                <div class="field-input" class="d-flex flex-row justify-content-around">
-                    <label>Services</label>
-                    <div id="optionsServices" class="d-flex flex-row justify-content-between">
-                        <div class="halfOptions">
-                            <div class="field-checkbox">
-                                <input type="checkbox" id="cpu-micro">
-                                <label for="">Processing - 1 micro - $ 1,00 per hour</label>
+                <div class="row field-input" class="d-flex flex-row justify-content-around">
+                    <label class="col-sm-3" >Services</label>
+                    <div id="optionsServices" class="row col-sm-9">
+                        <div class="halfOptions col-sm-6">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" id="cpu-micro" class="custom-control-input">
+                                <label for="cpu-micro" class="custom-control-label">Processing - 1 micro - $ 1,00 per hour</label>
                             </div>
-                            <div class="field-checkbox">
-                                <input type="checkbox"  id="cpu-medium">
-                                <label for="">Processing - 1 medium - $ 2,00 per hour</label>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox"  id="cpu-medium" class="custom-control-input">
+                                <label for="cpu-medium" class="custom-control-label">Processing - 1 medium - $ 2,00 per hour</label>
                             </div>
-                            <div class="field-checkbox">
-                                <input type="checkbox"  id="cpu-large">
-                                <label for="">Processing - 1 large - $ 10,00 per hour</label>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox"  id="cpu-large" class="custom-control-input">
+                                <label for="cpu-large" class="custom-control-label">Processing - 1 large - $ 10,00 per hour</label>
                             </div>
                         </div>
-                        <div class="halfOptions">
-                            <div class="field-checkbox">
-                                <input type="checkbox" id="hd-10gb">
-                                <label for="">Storage - 10 GB HD - $ 0,5 per hour</label>
+                        <div class="halfOptions col-sm-6">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" id="hd-10gb" class="custom-control-input">
+                                <label for="hd-10gb" class="custom-control-label">Storage - 10 GB HD - $ 0,5 per hour</label>
                             </div>
-                            <div class="field-checkbox">
-                                <input type="checkbox" id="hd-1tb">
-                                <label for="">Storage - 1 TB HD - $ 1,00 per hour</label>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" id="hd-1tb" class="custom-control-input">
+                                <label for="hd-1tb" class="custom-control-label">Storage - 1 TB HD - $ 1,00 per hour</label>
                             </div>
-                            <div class="field-checkbox">
-                                <input type="checkbox" id="ssd-100gb">
-                                <label for="">Storage - 100 GB SSD - $ 5,00 per hour</label>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" id="ssd-100gb" class="custom-control-input">
+                                <label for="ssd-100gb" class="custom-control-label">Storage - 100 GB SSD - $ 5,00 per hour</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <footer id="buttons" class="d-flex flex-row justify-content-center">
-                    <div>
-                        <button type="reset"class="btn btn-secondary">CLEAR</button>
+                        <button type="reset" class="btn btn-secondary">CLEAR</button>
                         <button type="submit" onclick="addInfo(event)" class="btn btn-primary">ADD</button>
-                    </div>
                 </footer>
             </form>
         </div>
