@@ -3,7 +3,6 @@
     <Header></Header>
     <Form></Form>
     <Table v-bind:records="records"></Table>
-    <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
   </div>
 </template>
 

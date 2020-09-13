@@ -16,9 +16,9 @@
                 >
                     <td>{{record.name}}</td>
                     <td>{{record.email}}</td>
-                    <td>{{record.birth}}</td>
-                    <td>{{record.optionsServices | getDescriptions}}</td>
-                    <td>{{record.optionsServices | getValueTotal}}</td>
+                    <td>{{record.birth | formattedDate}}</td>
+                    <td>{{record.services | getDescriptions}}</td>
+                    <td>{{record.services | getValueTotal}}</td>
                 </tr>
             </tbody>
         </table>
@@ -39,7 +39,11 @@ export default {
             return getDescriptionsService(idArray)
         },
         getValueTotal(idArray) {
-            return getValueTotalServices(idsArray)
+            return `$ ${getValueTotalServices(idArray)} per hour`
+        },
+        formattedDate(date) {
+            let dateArray = date.split("-")
+            return `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`
         }
     }
 }
@@ -48,7 +52,7 @@ export default {
 <style>
 #results-table {
     margin: 32px 0;
-    max-width: 1100px;
+    max-width: 1300px;
 }
 
 table {

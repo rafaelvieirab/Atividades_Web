@@ -32,16 +32,16 @@ const arrayServices = [
 ]
 
 export function getDescriptionsService(idArray) {
-    str = ""
+    let str = "\n"
     arrayServices.forEach(itemService => {
         if(idArray.includes(itemService.id)) 
-            str +=  "${itemService.description}\n"
+            str +=  `${itemService.description}\n`
     })
     return str
 }
 
 export function getValueTotalServices(idArray) {
-    total = 0
+    let total = 0
     arrayServices.forEach(itemService => {
         if(idArray.includes(itemService.id)) 
             total += itemService.valueByHour

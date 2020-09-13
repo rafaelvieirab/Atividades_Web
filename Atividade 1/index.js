@@ -127,7 +127,7 @@ function returnServicesAndTotal(services) {
     services.forEach(idService => {
         for(let itemService in arrayServices){
             if (arrayServices[itemService].id === idService){
-                textServices += `<p>${arrayServices[itemService].description}</p>`
+                textServices += `${arrayServices[itemService].description} ${"\n"}`
                 total += arrayServices[itemService].valueByHour
             }
         }

@@ -49,7 +49,7 @@
                 </div>
             </div>
             <footer id="buttons" class="d-flex flex-row justify-content-center">
-                <button type="reset" class="btn btn-secondary">CLEAR</button>
+                <button type="reset" class="btn btn-secondary" style="margin-right: 24px;">CLEAR</button>
                 <button type="submit" v-on:click.prevent="add" class="btn btn-primary">ADD</button>
             </footer>
         </form>
@@ -136,7 +136,8 @@ input[type='checkbox'] {
 button {
     width: 128px;
     height: 36px;
-    margin: 16px  16px;
+    margin: 16px 16px;
+    margin-right: 12px;
 
     background-color: #e3e3e3;
     color: #333333;
