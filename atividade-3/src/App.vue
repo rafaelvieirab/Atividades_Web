@@ -1,17 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Users/>
+    <Todos/>
+    <Photos/>
+    <Comments/>
+    <Posts/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Users from './components/Users.vue'
+import Todos from './components/Todos.vue'
+import Photos from './components/Photos.vue'
+import Comments from './components/Comments.vue'
+import Posts from './components/Posts.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Users,
+    Todos,
+    Photos,
+    Comments,
+    Posts,
   }
 }
 </script>
@@ -24,5 +36,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 </style>
