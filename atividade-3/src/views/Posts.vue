@@ -1,23 +1,21 @@
 <template>
-    <div>
-        <h1>Comentários Pares</h1>
+    <div class="results">
+        <h1>Posts Ímpares</h1>
         <table>
             <thead>
                 <tr>
-                    <th>PostId</th>
+                    <th>UserId</th>
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
+                    <th>Title</th>
                     <th>Body</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="comment in comments" :key="comment.id">
-                    <td>{{comment.postId}}</td>
-                    <td>{{comment.id}}</td>
-                    <td>{{comment.name}}</td>
-                    <td>{{comment.email}}</td>
-                    <td>{{comment.body}}</td>
+                <tr v-for="post in posts" :key="post.id">
+                    <td>{{post.userId}}</td>
+                    <td>{{post.id}}</td>
+                    <td>{{post.title}}</td>
+                    <td>{{post.body}}</td>
                 </tr>
             </tbody>
         </table>
@@ -26,18 +24,18 @@
 
 <script>
 export default {
-    name: 'Comments',
+    name: 'Posts',
     data: function() {
         return {
-            comments: [],
-            baseURI: 'https://jsonplaceholder.typicode.com/comments'
+            posts: [],
+            baseURI: 'https://jsonplaceholder.typicode.com/posts'
         }
     },
     mounted: function() {
         this.$http.get(this.baseURI)
             .then(result => {
-                this.comments = result.data.filter(comment => {
-                    return !(comment.id % 2)
+                this.posts = result.data.filter(post => {
+                    return post.id % 2
                 })
             }).catch(() => console.log("Ocorreu um problema"))
     }

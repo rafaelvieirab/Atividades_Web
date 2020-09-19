@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="results">
         <h1>Todos do Usuário 2 que já foram completados</h1>
         <table>
             <thead>

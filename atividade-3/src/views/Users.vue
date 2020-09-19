@@ -1,21 +1,25 @@
 <template>
-    <div>
+    <div class="results">
         <h1>Users</h1>
         <table>
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
+                    <th>Username</th>
                     <th>Email</th>
-                    <th>...</th>
+                    <th>Phone</th>
+                    <th>Website</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="user in users" :key="user.id">
                     <td>{{user.id}}</td>
                     <td>{{user.name}}</td>
+                    <td>{{user.username}}</td>
                     <td>{{user.email}}</td>
-                    <td>...</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.website}}</td>
                 </tr>
             </tbody>
         </table>

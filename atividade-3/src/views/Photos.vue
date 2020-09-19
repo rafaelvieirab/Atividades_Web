@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="results">
         <h1>Url da Imagem do álbum 3</h1>
         <ul>
             <li v-for="photo in photos" :key="photo.id">{{photo.url}}</li>
