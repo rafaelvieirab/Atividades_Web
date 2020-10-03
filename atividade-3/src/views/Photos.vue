@@ -2,7 +2,9 @@
     <div class="results">
         <h1>Url da Imagem do álbum 3</h1>
         <ul>
-            <li v-for="photo in photos" :key="photo.id">{{photo.url}}</li>
+            <li v-for="photo in photos" :key="photo.id">
+                <img :src="photo.url" :alt="photo.title">
+            </li>
         </ul>
     </div>
 </template>
