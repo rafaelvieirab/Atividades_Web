@@ -1,23 +1,20 @@
 package model;
 
-import java.util.Date;
-
 public class Employee {
 	private int id;
 	private String name;
 	private String office;
-	private Date birthDate;
-	private Date entryDate;
+	private String birthDate;
+	private String entryDate;
 
-	@SuppressWarnings("deprecation")
 	public Employee(int id, String name, String office, String birthDate, String entryDate) {
 		this.id = id;
 		this.name = name;
 		this.office = office;
-		this.birthDate = new Date(birthDate);
-		this.entryDate = new Date(entryDate);
+		this.birthDate = birthDate;
+		this.entryDate = entryDate;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -42,22 +39,21 @@ public class Employee {
 		this.office = office;
 	}
 
-	public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	@SuppressWarnings("deprecation")
 	public void setBirthDate(String birthDate) {
-		this.birthDate = new Date(birthDate);
+		this.birthDate = birthDate;
 	}
 
-	public Date getEntryDate() {
+	public String getEntryDate() {
 		return entryDate;
 	}
 
 	@SuppressWarnings("deprecation")
 	public void setEntryDate(String entryDate) {
-		this.entryDate = new Date(entryDate);
+		this.entryDate = entryDate;
 	}
 
 	@Override
